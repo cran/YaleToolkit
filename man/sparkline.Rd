@@ -1,9 +1,9 @@
-\name{YaleToolkit}
+\name{sparkline}
 \alias{sparkline}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Draws a sparkline}
 \description{
-Draws a times series or 'sparkline' in a compact iconic fashion suitable for inclusion in more complex graphics or text.}
+Draws a times series or `sparkline' in a compact iconic fashion suitable for inclusion in more complex graphics or text.}
 \usage{
 sparkline(s, times = NULL, ylim = NULL, buffer = unit(0, "lines"),
           margins = NULL, IQR = NULL, yaxis = FALSE, xaxis = FALSE,
@@ -14,31 +14,31 @@ sparkline(s, times = NULL, ylim = NULL, buffer = unit(0, "lines"),
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{s}{a vector or time series giving the data to be plotted. If \code{s} is a time series, the 'start', 'end', and 'frequency' found in \code{attributes(s)$tsp} are converted into a default argument to \code{times}.}
-  \item{times}{the times at which to plot the data; if NULL (the default), equal spacing is assumed, equivalent to setting \code{times = 1:length(s)}.}
-  \item{ylim}{the maximum and minimum value on the y-axis; if NULL, defaults to the actual maximum and minimum of the data.}
+  \item{s}{a vector or time series (class \code{"ts"} or \code{"zoo"}) giving the data to be plotted. If \code{s} is a time series, the \code{start}, \code{end}, and \code{frequency} found in \code{attributes(s)$tsp} are automatically converted into an argument to \code{times}.}
+  \item{times}{the times at which to plot the data; if \code{NULL} (the default), equal spacing is assumed, equivalent to setting \code{times = 1:length(s)}.}
+  \item{ylim}{the maximum and minimum value on the y-axis; if \code{NULL}, defaults to the actual maximum and minimum of the data.}
   \item{buffer}{a buffer above the maximum and below the minimum values attained by the sparkline. Defaults to \code{unit(0, 'lines')}.}
   \item{margins}{margins around the sparkline-plus-buffer area. NULL (the default) provides no margins; the value passed must be a 4-vector of units giving the bottom, left, top and right margins in that order.}
-  \item{IQR}{a list of graphics parameters to shade or otherwise delineate the interquartile range of the sparkline. NULL (the default), does not show the IQR. See details for more information.}
-  \item{yaxis}{draws a vertical axis if TRUE; defaults to FALSE in which case no axis is drawn.}
-  \item{xaxis}{'interior' draws a horizontal axis inside the plotting frame; 'exterior' outside the plotting frame (in the margins); defaults to FALSE in which case no axis is drawn.}
-  \item{ptopts}{a list of graphics parameters describing the points on the sparkline that are plotted and labelled. In particular the first and last or minimum and maximum points are labeled if \code{ptopts$labels} is \code{'first.last'} or \code{'min.max'}. In addition to \code{labels}, other relevant parameters from \link{gpar} should be valid. See details for more information.}
-  \item{margin.pars}{a list of graphics parameters describing the margin area. See details for more information.}
-  \item{buffer.pars}{a list of graphics parameters describing the buffer area. See details for more information.}
-  \item{frame.pars}{a list of graphics parameters describing the exact area taken up by the plotted sparkline. See details for more information.}
-  \item{line.pars}{a list of graphics parameters describing the sparkline. See details for more information.}
+  \item{IQR}{a list of graphics parameters to shade or otherwise delineate the interquartile range of the sparkline. \code{NULL} (the default), does not show the IQR. See \code{Details} for more information.}
+  \item{yaxis}{draws a vertical axis if \code{TRUE}; defaults to \code{FALSE} in which case no axis is drawn.}
+  \item{xaxis}{\code{'interior'} draws a horizontal axis inside the plotting frame; \code{'exterior'} outside the plotting frame (in the margins); defaults to \code{FALSE}, in which case no axis is drawn.}
+  \item{ptopts}{a list of graphics parameters describing the points on the sparkline that are plotted and labelled. In particular the first and last or minimum and maximum points are labeled if \code{ptopts$labels} is \code{'first.last'} or \code{'min.max'}. In addition to \code{labels}, other relevant parameters from \code{\link{gpar}} should be valid. See \code{Details} for more information.}
+  \item{margin.pars}{a list of graphics parameters describing the margin area. See \code{Details} for more information.}
+  \item{buffer.pars}{a list of graphics parameters describing the buffer area. See \code{Details} for more information.}
+  \item{frame.pars}{a list of graphics parameters describing the exact area taken up by the plotted sparkline. See \code{Details} for more information.}
+  \item{line.pars}{a list of graphics parameters describing the sparkline. See \code{Details} for more information.}
   \item{main}{a main title, above the sparkline.}
   \item{sub}{a subtitle, to the right of the sparkline.}
-  \item{xlab}{A string to label the x-axis.}
-  \item{ylab}{A string to label the y-axis.}
-  \item{new}{defaults to TRUE, which creates a new, empty page; otherwise adds the sparkline to the existing plot.}
+  \item{xlab}{a string to label the x-axis.}
+  \item{ylab}{a string to label the y-axis.}
+  \item{new}{defaults to \code{TRUE}, which creates a new, empty page; otherwise adds the sparkline to an existing plot.}
 }
 \details{
-  In all the cases where a list of graphics parameters is needed, the valid parameter names are the same as would be valid when passed to \link{gpar} in the appropriate call. That is, passing \code{list(fill = 'blue', col = 'red')} to \code{margin} gives a margin that is blue with a red border; but adding \code{fontface = 'bold'} will have no effect, just as it would have no effect in a call to \code{grid.rect()}. In particular, note that \code{ptopts} takes the following non-standard parameters: \code{labels}, a vector indexing the points to label or the string 'min.max' or 'first.last'; \code{labels.ch}, a vector of strings giving the labels; and \code{points}, a vector indexing the points at which points should be drawn. Passing 'min.max' or 'first.last' to \code{ptopts$labels} overrides any values of \code{ptopts$labels.ch}.
+  In all the cases where a list of graphics parameters is needed, the valid parameter names are the same as would be valid when passed to \code{\link{gpar}} in the appropriate call. That is, passing \code{list(fill = 'blue', col = 'red')} to \code{margin} gives a margin that is blue with a red border; but adding \code{fontface = 'bold'} will have no effect, just as it would have no effect in a call to \code{grid.rect()}. In particular, note that \code{ptopts} takes the following non-standard parameters: \code{labels}, a vector indexing the points to label or the string \code{'min.max'} or \code{'first.last'}; \code{labels.ch}, a vector of strings giving the labels; and \code{points}, a vector indexing the points at which points should be plotted. Passing \code{'min.max'} or \code{'first.last'} to \code{ptopts$labels} overrides any values of \code{ptopts$labels.ch}.
 }
-\references{Tufte, E. R. (2006) Beautiful Evidence Cheshire, Connecticut: Graphics Press.}
+\references{Tufte, E. R. (2006) {/it Beautiful Evidence} Cheshire, Connecticut: Graphics Press.}
 \author{John W. Emerson, Walton Green}
-\note{This is primarily intended to be called by other functions (\code{sparklines()} and \code{sparkmat()}), but it can also be used as an alternative to \code{ts.plot()}.} 
+\note{This is primarily intended to be called by other functions (\code{sparklines()} and \code{sparkmat()}), but it can also be used as an alternative to \code{ts.plot()}.  Thanks to Gabor Grothendieck for suggesting the generalization that provides support of \code{"zoo"} objects.} 
 
 %Make other sections like Warning with \section{Warning }{....}
 

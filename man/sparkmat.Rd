@@ -20,22 +20,21 @@ sparkmat(x, locs = NULL, w = NULL, h = NULL, lcol = NULL,
   \item{w}{vector of unit widths (or native widths if not specified as units).}
   \item{h}{vector of unit heights (or native heights if not specified as units).}
   \item{lcol}{vector of \code{ncol(x[[1]])} line colors, one for each sparkline in each panel.}
-  \item{yscales}{either a vector of length 2 giving the ylimits for all sparklines, or a list having the same length as the number of columns in ss (each component of which is a 2-vector giving scales for the individual sparklines). Defaults to NULL, in which case the scales for each sparkline are set to its minimum and maximum value within the panel.}
+  \item{yscales}{either a vector of length 2 giving the y-limits for all sparklines, or a list having the same length as the number of columns in \code{ss} (each component of which is a 2-vector giving scales for the individual sparklines). Defaults to \code{NULL}, in which case the scales for each sparkline are set to its minimum and maximum value within the panel.}
   \item{tile.shading}{vector of background shadings for the panels.}
   \item{tile.margin}{an outer margin around each tile (panel of sparklines). A 4-vector of units giving the bottom, left, top and right margins; defaults to
  \code{unit(c(0,0,0,0), 'points')}.}
-  \item{tile.pars}{a list of graphics parameters describing the buffer area.  See details for more information.}
-  \item{just}{default is c("right", "top"); controls the justification
+  \item{tile.pars}{a list of graphics parameters describing the buffer area.  See \code{Details} for more information.}
+  \item{just}{default is \code{c("right", "top")}; controls the justification
 of the sparklines relative to the provided location coordinates.}
-  \item{new}{defaults to TRUE, which creates a new, empty page; otherwise adds the sparkline to the existing plot.}
-  \item{...}{for arguments to be passed throught to \code{sparklines()}.}
+  \item{new}{defaults to \code{TRUE}, which creates a new, empty page; otherwise adds the sparkline to the existing plot.}
+  \item{...}{for arguments to be passed through to \code{sparklines()}.}
 }
 \details{
   In all the cases where a list of graphics parameters is needed, the valid parameter names are the same as would be valid when passed to \link{gpar} in the appropriate call. That is, passing \code{list(fill = 'blue', col = 'red')} to \code{margin} gives a margin that is blue with a red border; but adding \code{fontface = 'bold'} will have no effect, just as it would have no effect in a call to \code{grid.rect()}.
 }
-\references{Tufte, E. R. (2006) Beautiful Evidence Cheshire, Connecticut: Graphics Press.}
+\references{Tufte, E. R. (2006) {\it Beautiful Evidence} Cheshire, Connecticut: Graphics Press.}
 \author{John W. Emerson, Walton Green}
-\note{ any other notes? }
 \seealso{\code{\link{ts.plot}}, \code{\link{sparkline}}, \code{\link{sparklines}}}
 \examples{
 

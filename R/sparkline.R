@@ -30,11 +30,12 @@ function(s,
     times <- seq(attributes(s)$tsp[1], attributes(s)$tsp[2],
                  by = attributes(s)$tsp[3])
   }
-
+  
   if(!is.null(times) && (length(times)!=length(s) || any(is.na(times))))
     warning("inconsistency in times; ignoring times.")
+
   if(is.null(times) || length(times)!=length(s) || any(is.na(times)))
-    times <- 1:length(s)
+    times <- time(s)
   xlim <- range(times)
 
   if (is.vector(ptopts) && !is.list(ptopts)) {

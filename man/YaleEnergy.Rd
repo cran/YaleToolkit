@@ -4,7 +4,7 @@
 \title{Monthly energy consumption of Yale residential colleges.}
 \description{
   The data set contains monthly energy time series for Yale residential
-college, from July 1999 through July 2006.
+college, from July 1999 through July 2006
 }
 \usage{data(YaleEnergy)}
 \format{
@@ -26,9 +26,6 @@ college, from July 1999 through July 2006.
     \item{\code{lon}}{degrees longitude of the college}
     \item{\code{lat}}{degrees latitude}
   }
-}
-\details{
-  None.
 }
 \source{
   John W. Emerson, Yale University

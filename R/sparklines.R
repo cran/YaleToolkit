@@ -1,6 +1,7 @@
 "sparklines" <-
 function(ss,
                              times = NULL,
+			     overlap = FALSE,
                              yscale = NULL,
                              buffer = unit(0, 'lines'),
                              buffer.pars = NULL,
@@ -64,22 +65,25 @@ function(ss,
   if (!is.null(main)) grid.text(main, x=unit(0.5, "npc"), 
                                 y=unit(1, "npc")+unit(1.5, "lines"),
                                 gp=gpar(fontface=2))
-    
-  panel.layout <- viewport(layout = grid.layout(length(ss),1),
-                           xscale=range(times, na.rm = TRUE))
-  pushViewport(panel.layout)
-  if (!is.null(xaxis) & xaxis=="exterior") {
-    grid.xaxis()
-    if (!is.null(xlab))
-      grid.text(label = xlab, x = unit(0.5, 'npc'), y = unit(-3, "lines"))
-    xaxis <- FALSE
-    xlab <- NULL
-  }
+  if(!overlap){
+    panel.layout <- viewport(layout = grid.layout(length(ss),1),
+                             xscale=range(times, na.rm = TRUE))
+    pushViewport(panel.layout)
   
-  for(i in 1:length(ss)){
-    pushViewport(viewport(layout.pos.col = 1, layout.pos.row = i,
+    if (!is.null(xaxis) & xaxis=="exterior") {
+      grid.xaxis()
+      if (!is.null(xlab)){
+        grid.text(label = xlab, x = unit(0.5, 'npc'),
+                  y = unit(-3, "lines"))
+      }
+      xaxis <- FALSE
+      xlab <- NULL
+    }
+    ## Loop through sparklines, printing them not overlapped
+    for(i in 1:length(ss)){
+      pushViewport(viewport(layout.pos.col = 1, layout.pos.row = i,
                           yscale=yscales[[i]]))
-    sparkline(s=ss[,i], times=times, ylim=yscales[[i]],
+      sparkline(s=ss[,i], times=times, ylim=yscales[[i]],
                     buffer = buffer, new=FALSE,
                     ptopts = ptopts, #c(1,3,8),
                     frame.pars = frame.pars,
@@ -88,14 +92,50 @@ function(ss,
                     xaxis = xaxis, xlab=xlab[i],
                     sub = sub[i],
                     IQR = IQR, line.pars=gpar(col=lcol[i]))
-    ## The following 2 (or 3) pops are relocated from sparkline()
-    popViewport(1) # pops subvp
-    if (xaxis==TRUE || xaxis=='exterior') popViewport(1) # pops outervp
-    popViewport(1) # pops outer.margins
-    ## end of relocation from sparkline()
-    popViewport() # pop this cell in layout
+      ## The following 2 (or 3) pops are relocated from sparkline()
+      popViewport(1) # pops subvp
+      if (xaxis==TRUE || xaxis=='exterior') popViewport(1) # pops outervp
+  	  popViewport(1) # pops outer.margins
+      ## end of relocation from sparkline()
+      popViewport() # pop this cell in layout
+    }
+    popViewport(1) # pop the panel.layout
+  }else{ # if overlap is TRUE
+
+    if (!is.null(xaxis) & xaxis=="exterior") {
+      grid.xaxis()
+      if (!is.null(xlab)){
+        grid.text(label = xlab, x = unit(0.5, 'npc'),
+                  y = unit(-3, "lines"))
+      }
+      xaxis <- FALSE
+      xlab <- NULL
+    }
+
+    ## Loop through sparklines, printing them overlapped
+    ## THERE'S A PROBLEM if xaxis is not specified...why?
+
+    if(length(unique(yscales)) > 1){
+      warning("y-scales are not the same; are you really sure you want to plot all sparklines on the same y-axis?")
+    }
+
+    for(i in 1:length(ss)){
+      pushViewport(viewport(y = 0, height = 1,
+                   yscale = yscales[[i]], just = "bottom",
+                   default.units = "npc"))
+      sparkline(s=ss[,i], times=times, ylim=yscales[[i]],
+                buffer = buffer, new=FALSE,
+                ptopts = ptopts,
+                frame.pars = frame.pars,
+                buffer.pars = buffer.pars,
+                yaxis = yaxis, ylab=ylab[i], 
+                xaxis = xaxis, xlab=xlab[i],
+                sub = sub[i],
+                IQR = NULL,
+                line.pars=gpar(col=lcol[i]))
+	}
   }
-  popViewport(1) # pop the panel.layout
+  
   popViewport(1) # pop subvp
 
 } # End of function sparklines

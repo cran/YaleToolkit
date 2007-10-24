@@ -18,7 +18,9 @@
                      outer.rot=c(90,0),
                      gap=0.05,
                      buffer=0.02,
+	  	     reorder=NULL,
 
+                     cluster.pars=NULL,
                      stat.pars=NULL,
                      scatter.pars=NULL,
                      bwplot.pars=NULL,
@@ -56,6 +58,19 @@ if (!is.null(lower.pars) & !is.list(lower.pars)) {
 }
 if (!is.null(upper.pars) & !is.list(upper.pars)) {
   warning("upper.pars is not a list, proceed with caution.")
+}
+
+if (!is.null(reorder)){
+  if (pmatch(reorder, "cluster", nomatch = FALSE)){
+    if (is.null(cluster.pars)){
+	  cluster.pars <- list(dist.method = "euclidean",
+                               hclust.method = "complete")
+	}
+    x.num <- as.matrix(as.data.frame(lapply(x, as.numeric)))
+    x.clust <- hclust(dist(t(x.num), method = cluster.pars$dist.method),
+		      method = cluster.pars$hclust.method)
+    x <- x[,x.clust$order]
+  }
 }
 
 if (is.null(lower.pars$scatter.pars)) { lower.pars$scatter.pars <- "points" }
@@ -110,6 +125,8 @@ if (is.null(stat.pars$fontsize)) { stat.pars$fontsize <- 7 }
 if (is.null(stat.pars$signif)) { stat.pars$signif <- 0.05 }
 if (is.null(stat.pars$verbose)) { stat.pars$verbose <- FALSE }
 if (is.null(stat.pars$use.color)) { stat.pars$use.color <- TRUE }
+if (is.null(stat.pars$missing)) { stat.pars$missing <- "missing" }
+if (is.null(stat.pars$just)) { stat.pars$just <- "centre" }
 
 if (is.null(scatter.pars$pch)) { scatter.pars$pch <- 1 }
 if (is.null(scatter.pars$size)) { scatter.pars$size <- unit(0.25, "char") }
@@ -247,14 +264,22 @@ scatterplot.panel <- function(x, y, type, scatter.pars, axis.pars, xpos, ypos, x
   }
 
   if (type=="loess") {
-    panel.loess(x, y, col = 'red')
+    junk <- try(panel.loess(x, y, color = 'red', span = 1))
+    if (class(junk)=="try-error") warning("An error in loess occurred and was ignored; no line was plotted.")
+    #xy.lws <- try(lowess(x, y, f = 1))
+    #try(grid.lines(xy.lws$x, xy.lws$y,
+    #               gp = gpar(col = 'red'),
+    #               default.units = 'native'))    
   }
 
   if (type=="symlm") {
-    pcs <- prcomp(cbind(x,y))
-    slope <- abs(pcs$rotation[1,2] / pcs$rotation[1,1])
-    if (cor(x,y) < 0) slope <- -1*slope
-    panel.abline(pcs$center[2] - slope * pcs$center[1], slope, col = 'blue')
+    pcs <- try(prcomp(cbind(x,y)))
+    if (class(pcs)=="try-error") warning("An error in symlm occurred and was ignored; no line was plotted.")
+    else {
+      slope <- abs(pcs$rotation[1,2] / pcs$rotation[1,1])
+      if (cor(x,y) < 0) slope <- -1*slope
+      panel.abline(pcs$center[2] - slope * pcs$center[1], slope, col = 'blue')
+    }
   }
 
   if (type=="corrgram") { # in the style of Friendly (2002)
@@ -341,20 +366,22 @@ scatterplot.panel <- function(x, y, type, scatter.pars, axis.pars, xpos, ypos, x
 
     if (!is.na(stat.pars$verbose)) {	
       if (stat.pars$verbose == TRUE) {
-        grid.text(bquote(rho == .(rho) * .(sigrho)), x = 0.5, y = 0.9,
+        grid.text(bquote(rho == .(rho) * .(sigrho)), x = 0.5, y = 0.9, just=stat.pars$just,
                   gp=gpar(fontsize=stat.pars$fontsize, col = text.color))
-        grid.text(bquote(tau == .(tau) * .(sigtau)), x = 0.5, y = 0.7,
+        grid.text(bquote(tau == .(tau) * .(sigtau)), x = 0.5, y = 0.7, just=stat.pars$just,
                   gp=gpar(fontsize=stat.pars$fontsize, col = text.color))
-        grid.text(paste ('r=', corr, sigcor, sep = ''), x = 0.5, y = 0.5,
+        grid.text(paste ('r=', corr, sigcor, sep = ''), x = 0.5, y = 0.5, just=stat.pars$just,
                   gp=gpar(fontsize=stat.pars$fontsize, col = text.color)) 
-        grid.text(paste ('p=', p, sigp, sep = ''), x = 0.5, y = 0.3,
+        grid.text(paste ('p=', p, sigp, sep = ''), x = 0.5, y = 0.3, just=stat.pars$just,
                   gp=gpar(fontsize=stat.pars$fontsize, col = text.color)) 
-        if (missing>0) grid.text(paste(missing, 'missing'), x = 0.5, y = 0.1,
+        if (missing>0) grid.text(paste(missing, stat.pars$missing), x = 0.5, y = 0.1,
+                                 just=stat.pars$just,
                                  gp=gpar(fontsize=stat.pars$fontsize, col = 'red')) 
       } else {
-         grid.text(paste (corr, sigcor, sep = ''), x = 0.5, y = 0.7,
+         grid.text(paste (corr, sigcor, sep = ''), x = 0.5, y = 0.7, just=stat.pars$just,
                    gp=gpar(fontsize=stat.pars$fontsize, col = text.color)) 
          if (missing>0) grid.text(paste(missing, 'missing'), x = 0.5, y = 0.3,
+                                  just=stat.pars$just,
                                   gp=gpar(fontsize=stat.pars$fontsize, col = text.color))
       }
     }

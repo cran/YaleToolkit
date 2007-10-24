@@ -22,7 +22,7 @@ properties and apartment buildings).
   }
 }
 \details{
-  The data have been cleaned somewhat, with emphasis on somewhat.  For example,there is a property (a very nice one), which has an extremely low assessed value, given its characteristics.  It happens to straddle the border between New haven and Hamden, and so it pays only a proportion of it's property taxes to the City of New Haven.
+  The data have been cleaned somewhat, with emphasis on somewhat.  For example,there is a property (a very nice one), which has an extremely low assessed value, given its characteristics.  It happens to straddle the border between New Haven and Hamden, and so it pays only a proportion of it's property taxes to the City of New Haven.
 }
 \source{
 John W. Emerson, from the City of New Haven's property database, which contains more than 27,000 property records (including, for example, the New Haven Airport) and many more variables than included here.

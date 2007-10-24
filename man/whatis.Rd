@@ -1,25 +1,24 @@
 % --- Source file: whatis.Rd ---
 \name{whatis}
 \alias{whatis}
-\title{whatis}
+\title{Data frame summary}
 \description{
-  Summarize the characteristics of variables in the data frame.
+  Summarize the characteristics of variables (columns) in a data frame.
 }
 \usage{
 whatis(x, var.name.truncate = 20, type.truncate = 14)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{a data frame}
   \item{var.name.truncate}{maximum length (in characters) for truncation of variable names.  The default is 20; anything less than 12 is less than the column label in the resulting data frame and is a waste of information.}
   \item{type.truncate}{maximum length (in characters) for truncation of variable type; \code{14} is the full width, but \code{4} works well if space is at a premium.}
 }
-\details{The function \code{whatis()} provides a basic examination of some objective
-characteristics of each variable in a data frame.}
+\details{The function \code{whatis()} provides a basic examination of some
+characteristics of each variable (column) in a data frame.}
 \value{
-For \code{whatis()}, a list of objective characteristics describing the variables in the data frame, x. Each component of the list has \code{length(x)} values, one for each variable in the data frame \code{x}. 
+A list of characteristics describing the variables in the data frame, \code{x}. Each component of the list has \code{length(x)} values, one for each variable in the data frame \code{x}. 
   \item{variable.name}{from the \code{names(x)} attribute, possibly truncated to \code{var.name.truncate} characters in length.}
-  \item{type}{the possibilities include "pure factor", "mixed factor", "ordered factor", "character", and "numeric"; \code{whatis()} considers the possibility that a factor or a vector could contain character and/or numeric values.  If both character and numeric values are present, and if the variable is a factor, then it is called a mixed factor.  If the levels of a factor are purely character or numeric (but not both), it is a pure factor.  Non-factors must then be either character or numeric.}
+  \item{type}{the possibilities include \code{"pure factor"}, \code{"mixed factor"}, \code{"ordered factor"}, \code{"character"}, and \code{"numeric"}; \code{whatis()} considers the possibility that a factor or a vector could contain character and/or numeric values.  If both character and numeric values are present, and if the variable is a factor, then it is called a mixed factor.  If the levels of a factor are purely character or numeric (but not both), it is a pure factor.  Non-factors must then be either character or numeric.}
   \item{missing}{the number of \code{NA}s in the variable.}
   \item{distinct.values}{the number of distinct values in the variable, equal to \code{length(table(variable))}.}
   \item{precision}{the number of decimal places of precision.}
