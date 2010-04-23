@@ -15,8 +15,8 @@
   \tabular{ll}{
     Package: \tab YaleToolkit\cr
     Type: \tab Package\cr
-    Version: \tab 3.1\cr
-    Date: \tab 2007-10-24\cr
+    Version: \tab 3.2\cr
+    Date: \tab 2010-04-23\cr
     License: \tab GPL version 2 or newer\cr
   }
   See individual help files for more information about the functions \code{barcode()},
@@ -48,12 +48,12 @@ Note that some terminology from Paul Murrell's \code{grid} package is used throu
   Maintainer: John W. Emerson <john.emerson@yale.edu>
 }
 \references{
-Chambers, J.M., Cleveland, W.S., Kleiner, B., and Tukey, P.A. (1983), {\it Graphical Methods for Data Analysis}, Belmont, CA: Wadsworth.
+Chambers, J.M., Cleveland, W.S., Kleiner, B., and Tukey, P.A. (1983), \emph{Graphical Methods for Data Analysis}, Belmont, CA: Wadsworth.
 
 Friendly, M. (2002) 'Corrgrams: Exploratory displays for correlation matrices' \code{American Statistician} 56(4), 316--324.
 
-Tufte, Edward R. (2006) {\it Beautiful Evidence} The Graphics Press, Cheshire, Connecticut.
-See http://www.edwardtufte.com for this and other references.
+Tufte, Edward R. (2006) \emph{Beautiful Evidence} The Graphics Press, Cheshire, Connecticut.
+See \url{http://www.edwardtufte.com} for this and other references.
 
 }
 \keyword{package}

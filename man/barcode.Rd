@@ -48,7 +48,7 @@ display.}
 \details{
 The barcode plot aids in comparing distributions. It shares some of the characteristics of side-by-side histograms or boxplots, and of rugs or stripplots. We have found it particularly useful with clumped data, when other methods obscure detail.
 }
-\references{Chambers, J. M. and Hastie, T. J. (1992) {\it Statistical Models in S}. Wadsworth \& Brooks/Cole.}
+\references{Chambers, J. M. and Hastie, T. J. (1992) \emph{Statistical Models in S}. Wadsworth \& Brooks/Cole.}
 \author{John W. Emerson and Walton Green}
 \note{John Hartigan designed and implemented an early version of the barcode plot. This implementation using \code{grid} graphics adds some useful options and is better suited for general distribution.}
 \seealso{\code{\link{gpairs}}, \code{\link{rug}}, \code{\link{stripplot}}}

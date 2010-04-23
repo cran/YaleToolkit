@@ -47,7 +47,7 @@ sparklines(ss, times = NULL, overlap = FALSE, yscale = NULL,
 \note{
   We do not support non-aligned time series plots such as \code{ts.plot(airmiles, Nile, nhtemp)}.
 }
-\references{Tufte, E. R. (2006) {\it Beautiful Evidence} Cheshire, Connecticut: Graphics Press.}
+\references{Tufte, E. R. (2006) \emph{Beautiful Evidence} Cheshire, Connecticut: Graphics Press.}
 \author{John W. Emerson, Walton Green}
 
 \seealso{\code{\link{ts.plot}}, \code{\link{sparkline}}, \code{\link{sparkmat}}}

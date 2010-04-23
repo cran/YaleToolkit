@@ -66,15 +66,15 @@ of the plot because of the way rotation of barcodes is performed.
 If \code{whatis=TRUE}, the value is a data frame containing variable names, types, numbers of missing values, numbers of distinct values, precisions, maxima and minima.
 }
 \references{
-Emerson, John W. (1998) "Mosaic Displays in S-PLUS: A General Implementation and a Case Study."  {\it Statistical Computing and Graphics Newsletter} Vol. 9,No. 1, 1998.
+Emerson, John W. (1998) "Mosaic Displays in S-PLUS: A General Implementation and a Case Study."  \emph{Statistical Computing and Graphics Newsletter} Vol. 9,No. 1, 1998.
 
-Basford, K. E. and J. W. Tukey (1999) {\it Graphical Analysis of Multiresponse Data: Illustrated with a Plant Breeding Trial.}
+Basford, K. E. and J. W. Tukey (1999) \emph{Graphical Analysis of Multiresponse Data: Illustrated with a Plant Breeding Trial.}
 
-Friendly, M. (2000). {\it Visualizing Categorical Data.} SAS Press.
+Friendly, M. (2000). \emph{Visualizing Categorical Data.} SAS Press.
 
-Friendly, M., 2002, `Corrgrams: Exploratory displays for correlation matrices.' {\it American Statistician} 56(4), 316--324.
+Friendly, M., 2002, "Corrgrams: Exploratory displays for correlation matrices." \emph{American Statistician} 56(4), 316--324.
 
-Green, W. A. (2006) Loosening the CLAMP: An exploratory graphical approach to the Climate Leaf Analysis Multivariate Program {\it Palaeontologia Electronica} 9(2):9A.
+Green, W. A. (2006) "Loosening the CLAMP: An exploratory graphical approach to the Climate Leaf Analysis Multivariate Program." \emph{Palaeontologia Electronica} 9(2):9A.
 }
 \author{John W. Emerson, Walton Green}
 \seealso{\code{\link{pairs}}, \code{\link{splom}}, \code{\link{mosaicplot}}, \code{\link[vcd]{strucplot}}, \code{\link{bwplot}}, \code{\link{barcode}}, \code{\link{stripplot}}.}

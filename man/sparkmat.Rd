@@ -33,7 +33,7 @@ of the sparklines relative to the provided location coordinates.}
 \details{
   In all the cases where a list of graphics parameters is needed, the valid parameter names are the same as would be valid when passed to \link{gpar} in the appropriate call. That is, passing \code{list(fill = 'blue', col = 'red')} to \code{margin} gives a margin that is blue with a red border; but adding \code{fontface = 'bold'} will have no effect, just as it would have no effect in a call to \code{grid.rect()}.
 }
-\references{Tufte, E. R. (2006) {\it Beautiful Evidence} Cheshire, Connecticut: Graphics Press.}
+\references{Tufte, E. R. (2006) \emph{Beautiful Evidence} Cheshire, Connecticut: Graphics Press.}
 \author{John W. Emerson, Walton Green}
 \seealso{\code{\link{ts.plot}}, \code{\link{sparkline}}, \code{\link{sparklines}}}
 \examples{

@@ -48,24 +48,24 @@
   Data consists of a data frame with 245 rows and 33 columns (variables). The rows represent floras (collections of plants from a defined locality); the first 31 variables are percentages of leaves in each flora in each of 31 morphological categories; the 32nd variable is mean annual temperature of the area from which the floras was collected in degrees C, and the 32nd is a factor indicating which of 4 published studies the floras come from.
 See cited publications for more details.}
 \source{
-  Green, W. A. (2006) Loosening the CLAMP: An exploratory graphical approach to the Climate Leaf Analysis Multivariate Program {\it Palaeontologia Electronica} 9(2):9A.
+  Green, W. A. (2006) Loosening the CLAMP: An exploratory graphical approach to the Climate Leaf Analysis Multivariate Program \emph{Palaeontologia Electronica} 9(2):9A.
 
-<http://www.palaeo-electronica.org/2006\_2/clamp/index.html>
+\url{http://www.palaeo-electronica.org/2006\_2/clamp/index.html}
 
-<http://www.open.ac.uk/earth-research/spicer/CLAMP/Physg3ar.xls> (the climatic variables)
+\url{http://www.open.ac.uk/earth-research/spicer/CLAMP/Physg3ar.xls} (the climatic variables)
 
-<http://www.open.ac.uk/earth-research/spicer/CLAMP/MET3AR.xls> (the morphological leaf scores)
+\url{http://www.open.ac.uk/earth-research/spicer/CLAMP/MET3AR.xls} (the morphological leaf scores)
 }
 \references{
-Gregory-Wodzicki, K. M. (2000) Relationships between leaf morphology and climate, Bolivia: implications for estimating paleoclimate from fossil floras. {\it Paleobiology} 26(4):668--688.
+Gregory-Wodzicki, K. M. (2000) Relationships between leaf morphology and climate, Bolivia: implications for estimating paleoclimate from fossil floras. \emph{Paleobiology} 26(4):668--688.
 
-Jacobs, B. F. (1999) Estimation of rainfall variables from leaf characters in tropical Africa. {\it Palaeogeography, Palaeoclimatology, Palaeoecology} 145:231--250.
+Jacobs, B. F. (1999) Estimation of rainfall variables from leaf characters in tropical Africa. \emph{Palaeogeography, Palaeoclimatology, Palaeoecology} 145:231--250.
 
-Jacobs, B. F. (2002) Estimation of low-latitude paleoclimates using fossil angiosperm leaves: examples from the Miocene Tugen Hills, Kenya. {\it Paleobiology} 28(3):399--421.
+Jacobs, B. F. (2002) Estimation of low-latitude paleoclimates using fossil angiosperm leaves: examples from the Miocene Tugen Hills, Kenya. \emph{Paleobiology} 28(3):399--421.
 
-Kowalski, E. A. (2002) Mean annual temperature estimation base on leaf morphology: a test from tropical South America. {\it Palaeogeography, Palaeoclimatology, Palaeoecology} 188:141--165.
+Kowalski, E. A. (2002) Mean annual temperature estimation base on leaf morphology: a test from tropical South America. \emph{Palaeogeography, Palaeoclimatology, Palaeoecology} 188:141--165.
 
-Wolfe, J.A., (1993), A method of obtaining climatic parameters from leaf assemblages. {\it U.S. Geological Survey Bulletin} 2040, 73 pp.
+Wolfe, J.A., (1993), A method of obtaining climatic parameters from leaf assemblages. \emph{U.S. Geological Survey Bulletin} 2040, 73 pp.
 }
 \examples{
 data(Leaves)
