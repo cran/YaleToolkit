@@ -18,7 +18,7 @@
 #'     matrices' \code{American Statistician} 56(4), 316--324.
 #'   \item Tufte, Edward R. (2006) \emph{Beautiful Evidence} The Graphics
 #'     Press, Cheshire, Connecticut.
-#'     See \url{http://www.edwardtufte.com} for this and other references.
+#'     See \url{https://www.edwardtufte.com} for this and other references.
 #' }
 #' 
 #' @author John W. Emerson, Walton Green
@@ -31,5 +31,8 @@
 #' @importFrom foreach '%do%'
 #' @importFrom iterators iread.table
 #' @importFrom iterators ireadLines
+#' @importFrom graphics boxplot
+#' @importFrom stats is.ts
+#' @importFrom stats time
 #' @import grid
 NULL

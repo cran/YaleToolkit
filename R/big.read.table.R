@@ -16,10 +16,13 @@
 #' @note This is very much 'in development' and could be buggy.  I put it here
 #' as I used some example in one of my courses, but then I needed to update
 #' the package to keep CRAN happy.  So here it is.  Buyer Beware.  - Jay
+#' @importFrom utils object.size
+#' @importFrom utils read.table
 #' @examples
 #' data(CO2)
 #' write.csv(CO2, "CO2.csv", row.names=FALSE)
 #' x <- big.read.table("CO2.csv", nrows=10)
+#' unlink("CO2.csv")
 #' head(x)
 #' @export
 big.read.table <- function(file, nrows=100000, sep=",",
